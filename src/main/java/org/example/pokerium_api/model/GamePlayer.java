@@ -1,22 +1,24 @@
 package org.example.pokerium_api.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.*;
-import java.time.Instant;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 
 @Entity
 @Table(name = "game_players")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class GamePlayer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long gameId;
-    private Long userId;
+    private UUID userId;
     private Integer stack;
-    private String status; // ACTIVE, FOLDED, ALL_IN
+    private String status; // ACTIVE, FOLDED
+    private String card1;
+    private String card2;
+    private Integer seatIndex;
 }
